@@ -1,0 +1,88 @@
+openapi: 3.0.4
+info:
+  title: Fortune Teller
+  description: Fortune Teller uses AI to generate personalized mystical fortunes across multiple categories including love, career, health, wealth, and travel.
+  termsOfService: https://apiverve.com/terms/
+  contact:
+    name: APIVerve Support
+    email: hello@apiverve.com
+    url: https://apiverve.com/contact
+  version: 1.0.9
+externalDocs:
+  description: Learn more about APIVerve
+  url: https://docs.apiverve.com?utm_source=openapi
+servers:
+- url: https://api.apiverve.com/
+paths:
+  /v1/fortuneteller:
+    get:
+      summary: Get AI Fortune Prediction
+      description: Fortune Teller uses AI to generate personalized mystical fortunes across multiple categories including love, career, health, wealth, and travel.
+      operationId: fortuneteller
+      parameters:
+      - name: category
+        default: general
+        in: query
+        schema:
+          type: string
+        required: false
+        description: 'Fortune category: general, love, career, health, wealth, travel'
+        example: general
+      - name: question
+        in: query
+        schema:
+          type: string
+        required: false
+        description: Optional question for personalized fortune (max 500 characters)
+        example: What does the future hold for me?
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: status
+                  error:
+                    type: string
+                    description: error
+                  data:
+                    type: string
+                    description: data
+              example:
+                status: ok
+                error: 
+                data:
+                  fortune: The threads of destiny are aligning, weaving a tapestry of unexpected opportunities. Embrace the whispers of change, for they carry the keys to unlocking your hidden potential.
+                  insight: Trust your intuition; it is the compass guiding you toward your truest self.
+                  timeframe: in the coming weeks
+                  category: general
+                  question: 
+                  luckyNumbers:
+                  - 69
+                  - 94
+                  - 18
+                  - 63
+                  - 41
+                  - 62
+                  luckyElement: Fire
+                  luckyColor: Purple
+                  luckyDay: Friday
+                  timestamp: 2025-11-30T10:24:58.0970000Z
+        '401':
+          description: Your request was not authorized, or your API Key was invalid
+        '404':
+          description: Requested resource was not found
+        '500':
+          description: A server error has occured, try again later
+components:
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: x-api-key
+      in: header
+security:
+- api_key: []
