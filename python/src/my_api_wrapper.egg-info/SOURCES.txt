@@ -1,0 +1,14 @@
+LICENSE
+README.md
+pyproject.toml
+src/my_api_wrapper/__init__.py
+src/my_api_wrapper/apiClient.py
+src/my_api_wrapper/exceptions.py
+src/my_api_wrapper/setup.py
+src/my_api_wrapper.egg-info/PKG-INFO
+src/my_api_wrapper.egg-info/SOURCES.txt
+src/my_api_wrapper.egg-info/dependency_links.txt
+src/my_api_wrapper.egg-info/top_level.txt
+src/my_api_wrapper/tests/__init__.py
+src/my_api_wrapper/tests/test_api.py
+tests/test_api.py
