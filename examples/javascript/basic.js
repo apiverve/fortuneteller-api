@@ -13,13 +13,7 @@ const API_URL = 'https://api.apiverve.com/v1/fortuneteller';
  */
 async function callFortuneTellerAPI() {
   try {
-    // Query parameters
-    const params &#x3D; new URLSearchParams({
-            category: &#x27;general&#x27;,
-            question: &#x27;What does the future hold for me?&#x27;
-        });
-
-    const response = await fetch(`${API_URL}?${params}`, {
+    const response = await fetch(API_URL, {
       method: 'GET',
       headers: {
         'x-api-key': API_KEY
