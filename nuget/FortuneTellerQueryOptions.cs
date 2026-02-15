@@ -12,14 +12,12 @@ namespace APIVerve.API.FortuneTeller
     {
         /// <summary>
         /// Fortune category: general, love, career, health, wealth, travel
-        /// Example: general
         /// </summary>
         [JsonProperty("category")]
         public string Category { get; set; }
 
         /// <summary>
         /// Optional question for personalized fortune (max 500 characters)
-        /// Example: What does the future hold for me?
         /// </summary>
         [JsonProperty("question")]
         public string Question { get; set; }
