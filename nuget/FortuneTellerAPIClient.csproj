@@ -3,8 +3,8 @@
   <PropertyGroup>
     <TargetFrameworks>net20;net35;net40;net45;netstandard2.0;netstandard2.1;net6.0</TargetFrameworks>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Title>APIVerve.API.FortuneTeller</Title>
-    <Version>1.1.12</Version>
+    <Title>FortuneTeller</Title>
+    <Version>1.1.13</Version>
     <Authors>APIVerve</Authors>
     <Company>APIVerve</Company>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
@@ -12,13 +12,13 @@
 
     <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
     <PackageReadmeFile>Readme.md</PackageReadmeFile>
-    <PackageProjectUrl>https://apiverve.com/marketplace/fortuneteller</PackageProjectUrl>
+    <PackageProjectUrl>https://apiverve.com/marketplace/fortuneteller?utm_source=nuget&amp;utm_medium=homepage</PackageProjectUrl>
     <SignAssembly>False</SignAssembly>
     <Description>Fortune Teller uses AI to generate personalized mystical fortunes across multiple categories including love, career, health, wealth, and travel.</Description>
     <RepositoryUrl>https://github.com/apiverve/fortuneteller-api</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageTags>fortune teller;predictions;lucky numbers;horoscope;divination;api;rest;http;client;apiverve;wrapper;sdk;api;rest;http;client;apiverve;wrapper;sdk</PackageTags>
-    <Copyright>©2025 APIVerve. All Rights Reserved</Copyright>
+    <PackageTags>api;rest;http;client;apiverve;wrapper;sdk;api;rest;http;client;apiverve;wrapper;sdk</PackageTags>
+    <Copyright>©2026 APIVerve. All Rights Reserved</Copyright>
     <ApplicationIcon>favicon.ico</ApplicationIcon>
     <PackageIcon>favicon@128.png</PackageIcon>
     <BaseOutputPath>.\bin</BaseOutputPath>
