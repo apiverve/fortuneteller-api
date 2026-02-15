@@ -16,7 +16,45 @@ using System.Net;
 namespace APIVerve.API.FortuneTeller
 {
     /// <summary>
-    /// Client for the APIVerve.API.FortuneTeller API
+    /// Validation rule for a parameter
+    /// </summary>
+    public class ValidationRule
+    {
+        /// <summary>Parameter type (string, integer, number, boolean)</summary>
+        public string Type { get; set; } = "string";
+        /// <summary>Whether the parameter is required</summary>
+        public bool Required { get; set; }
+        /// <summary>Minimum value for numbers</summary>
+        public double? Min { get; set; }
+        /// <summary>Maximum value for numbers</summary>
+        public double? Max { get; set; }
+        /// <summary>Minimum length for strings</summary>
+        public int? MinLength { get; set; }
+        /// <summary>Maximum length for strings</summary>
+        public int? MaxLength { get; set; }
+        /// <summary>Format (email, url, ip, date, hexColor)</summary>
+        public string Format { get; set; }
+        /// <summary>Allowed enum values</summary>
+        public string[] EnumValues { get; set; }
+    }
+
+    /// <summary>
+    /// Exception thrown when parameter validation fails
+    /// </summary>
+    public class ValidationException : Exception
+    {
+        /// <summary>List of validation errors</summary>
+        public List<string> Errors { get; }
+
+        /// <summary>Creates a new ValidationException with the specified errors</summary>
+        public ValidationException(List<string> errors) : base("Validation failed: " + string.Join("; ", errors.ToArray()))
+        {
+            Errors = errors;
+        }
+    }
+
+    /// <summary>
+    /// Client for the FortuneTeller API
     /// </summary>
     public class FortuneTellerAPIClient
 #if NET45 || NETSTANDARD2_0 || NETSTANDARD2_1 || NET6_0
@@ -25,6 +63,23 @@ namespace APIVerve.API.FortuneTeller
     {
         private readonly string _apiEndpoint = "https://api.apiverve.com/v1/fortuneteller";
         private readonly string _method = "GET";
+
+        /// <summary>Validation rules for parameters</summary>
+        private static readonly Dictionary<string, ValidationRule> _validationRules = new Dictionary<string, ValidationRule>
+        {
+            { "category", new ValidationRule { Type = "string", Required = false } },
+            { "question", new ValidationRule { Type = "string", Required = false, MaxLength = 500 } }
+        };
+
+        /// <summary>Format validation patterns</summary>
+        private static readonly Dictionary<string, System.Text.RegularExpressions.Regex> _formatPatterns = new Dictionary<string, System.Text.RegularExpressions.Regex>
+        {
+            { "email", new System.Text.RegularExpressions.Regex(@"^[^\s@]+@[^\s@]+\.[^\s@]+$", System.Text.RegularExpressions.RegexOptions.IgnoreCase) },
+            { "url", new System.Text.RegularExpressions.Regex(@"^https?://.+", System.Text.RegularExpressions.RegexOptions.IgnoreCase) },
+            { "ip", new System.Text.RegularExpressions.Regex(@"^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$|^([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$") },
+            { "date", new System.Text.RegularExpressions.Regex(@"^\d{4}-\d{2}-\d{2}$") },
+            { "hexColor", new System.Text.RegularExpressions.Regex(@"^#?([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$", System.Text.RegularExpressions.RegexOptions.IgnoreCase) }
+        };
 
 #if NET45 || NETSTANDARD2_0 || NETSTANDARD2_1 || NET6_0
         private readonly HttpClient _httpClient;
@@ -136,14 +191,14 @@ namespace APIVerve.API.FortuneTeller
                 throw new ArgumentException("API key is required. Get your API key at: https://apiverve.com");
             }
 
-            // Validate API key format (GUID or alphanumeric with hyphens)
-            if (!System.Text.RegularExpressions.Regex.IsMatch(apiKey, @"^[a-zA-Z0-9-]+$"))
+            // Validate API key format (GUID or alphanumeric with hyphens/underscores for prefixed keys)
+            if (!System.Text.RegularExpressions.Regex.IsMatch(apiKey, @"^[a-zA-Z0-9_-]+$"))
             {
-                throw new ArgumentException("Invalid API key format. API key must be alphanumeric and may contain hyphens. Get your API key at: https://apiverve.com");
+                throw new ArgumentException("Invalid API key format. API key must be alphanumeric and may contain hyphens and underscores. Get your API key at: https://apiverve.com");
             }
 
             // Check minimum length (GUIDs are typically 36 chars with hyphens, or 32 without)
-            string trimmedKey = apiKey.Replace("-", "");
+            string trimmedKey = apiKey.Replace("-", "").Replace("_", "");
             if (trimmedKey.Length < 32)
             {
                 throw new ArgumentException("Invalid API key. API key appears to be too short. Get your API key at: https://apiverve.com");
@@ -320,14 +375,109 @@ namespace APIVerve.API.FortuneTeller
 #endif
 
         /// <summary>
+        /// Validates parameters against defined rules
+        /// </summary>
+        /// <param name="options">Query options to validate</param>
+        /// <exception cref="ValidationException">Thrown when validation fails</exception>
+        private void ValidateParams(FortuneTellerQueryOptions options)
+        {
+            if (_validationRules == null || _validationRules.Count == 0) return;
+
+            var errors = new List<string>();
+            var optionsType = options?.GetType();
+
+            foreach (var entry in _validationRules)
+            {
+                var paramName = entry.Key;
+                var rule = entry.Value;
+                object value = null;
+
+                // Get property value if options is not null
+                if (options != null && optionsType != null)
+                {
+                    var prop = optionsType.GetProperty(paramName) ??
+                               optionsType.GetProperty(paramName.Substring(0, 1).ToUpper() + paramName.Substring(1));
+                    if (prop != null)
+                    {
+                        value = prop.GetValue(options, null);
+                    }
+                }
+
+                // Check required
+                if (rule.Required && (value == null || (value is string s && string.IsNullOrEmpty(s))))
+                {
+                    errors.Add(string.Format("Required parameter [{0}] is missing", paramName));
+                    continue;
+                }
+
+                if (value == null) continue;
+
+                // Type-specific validation
+                if (rule.Type == "integer" || rule.Type == "number")
+                {
+                    double numValue;
+                    if (value is double d) numValue = d;
+                    else if (value is int i) numValue = i;
+                    else if (value is long l) numValue = l;
+                    else if (value is float f) numValue = f;
+                    else if (!double.TryParse(value.ToString(), out numValue))
+                    {
+                        errors.Add(string.Format("Parameter [{0}] must be a valid {1}", paramName, rule.Type));
+                        continue;
+                    }
+
+                    if (rule.Min.HasValue && numValue < rule.Min.Value)
+                        errors.Add(string.Format("Parameter [{0}] must be at least {1}", paramName, rule.Min.Value));
+                    if (rule.Max.HasValue && numValue > rule.Max.Value)
+                        errors.Add(string.Format("Parameter [{0}] must be at most {1}", paramName, rule.Max.Value));
+                }
+                else if (rule.Type == "string" && value is string strValue)
+                {
+                    if (rule.MinLength.HasValue && strValue.Length < rule.MinLength.Value)
+                        errors.Add(string.Format("Parameter [{0}] must be at least {1} characters", paramName, rule.MinLength.Value));
+                    if (rule.MaxLength.HasValue && strValue.Length > rule.MaxLength.Value)
+                        errors.Add(string.Format("Parameter [{0}] must be at most {1} characters", paramName, rule.MaxLength.Value));
+
+                    if (!string.IsNullOrEmpty(rule.Format) && _formatPatterns.ContainsKey(rule.Format))
+                    {
+                        if (!_formatPatterns[rule.Format].IsMatch(strValue))
+                            errors.Add(string.Format("Parameter [{0}] must be a valid {1}", paramName, rule.Format));
+                    }
+                }
+
+                // Enum validation
+                if (rule.EnumValues != null && rule.EnumValues.Length > 0)
+                {
+                    var valueStr = value.ToString();
+                    bool found = false;
+                    foreach (var enumVal in rule.EnumValues)
+                    {
+                        if (enumVal == valueStr) { found = true; break; }
+                    }
+                    if (!found)
+                        errors.Add(string.Format("Parameter [{0}] must be one of: {1}", paramName, string.Join(", ", rule.EnumValues)));
+                }
+            }
+
+            if (errors.Count > 0)
+            {
+                throw new ValidationException(errors);
+            }
+        }
+
+        /// <summary>
         /// Execute the API call synchronously
         /// </summary>
         /// <param name="options">Query parameters</param>
         /// <returns>The API response</returns>
         /// <exception cref="WebException">Thrown when the request fails (.NET 2.0-4.0)</exception>
         /// <exception cref="HttpRequestException">Thrown when the request fails (.NET 4.5+)</exception>
+        /// <exception cref="ValidationException">Thrown when parameter validation fails</exception>
         public ResponseObj Execute(FortuneTellerQueryOptions options = null)
         {
+            // Validate parameters before making request
+            ValidateParams(options);
+
 #if NET45 || NETSTANDARD2_0 || NETSTANDARD2_1 || NET6_0
             return ExecuteAsync(options).GetAwaiter().GetResult();
 #else
@@ -717,6 +867,7 @@ namespace APIVerve.API.FortuneTeller
                 _httpClient.Dispose();
             }
         }
+
 #endif
     }
 }
