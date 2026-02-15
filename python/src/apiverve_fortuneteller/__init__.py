@@ -1,1 +1,3 @@
-from .apiClient import FortunetellerAPIClient
+from .apiClient import FortunetellerAPIClient, FortunetellerAPIClientError
+
+__all__ = ['FortunetellerAPIClient', 'FortunetellerAPIClientError']
