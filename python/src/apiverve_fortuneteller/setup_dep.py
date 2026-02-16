@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='apiverve_fortuneteller',
-    version='1.1.13',
+    version='1.1.14',
     packages=find_packages(),
     include_package_data=True,
     install_requires=[
