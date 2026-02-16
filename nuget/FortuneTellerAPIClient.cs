@@ -191,17 +191,10 @@ namespace APIVerve.API.FortuneTeller
                 throw new ArgumentException("API key is required. Get your API key at: https://apiverve.com");
             }
 
-            // Validate API key format (GUID or alphanumeric with hyphens/underscores for prefixed keys)
+            // Validate API key format (GUID, prefixed keys like apv_xxx, or alphanumeric)
             if (!System.Text.RegularExpressions.Regex.IsMatch(apiKey, @"^[a-zA-Z0-9_-]+$"))
             {
                 throw new ArgumentException("Invalid API key format. API key must be alphanumeric and may contain hyphens and underscores. Get your API key at: https://apiverve.com");
-            }
-
-            // Check minimum length (GUIDs are typically 36 chars with hyphens, or 32 without)
-            string trimmedKey = apiKey.Replace("-", "").Replace("_", "");
-            if (trimmedKey.Length < 32)
-            {
-                throw new ArgumentException("Invalid API key. API key appears to be too short. Get your API key at: https://apiverve.com");
             }
         }
 
