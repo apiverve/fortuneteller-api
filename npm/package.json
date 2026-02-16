@@ -1,6 +1,6 @@
 {
   "name": "@apiverve/fortuneteller",
-  "version": "1.1.13",
+  "version": "1.1.14",
   "description": "Fortune Teller uses AI to generate personalized mystical fortunes across multiple categories including love, career, health, wealth, and travel.",
   "main": "index.js",
   "types": "index.d.ts",
