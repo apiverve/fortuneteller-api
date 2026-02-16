@@ -44,7 +44,10 @@ from apiverve_fortuneteller.apiClient import FortunetellerAPIClient
 # Initialize the client with your APIVerve API key
 api = FortunetellerAPIClient("[YOUR_API_KEY]")
 
-query = { "category": "general", "question": "What does the future hold for me?" }
+query = {
+    "category": "general",
+    "question": "What does the future hold for me?"
+}
 
 try:
     # Make the API call
@@ -82,7 +85,10 @@ Using the API client, you can perform requests to the API.
 ###### Define Query
 
 ```python
-query = { "category": "general", "question": "What does the future hold for me?" }
+query = {
+    "category": "general",
+    "question": "What does the future hold for me?"
+}
 ```
 
 ###### Simple Request
@@ -136,7 +142,10 @@ from apiverve_fortuneteller.apiClient import FortunetellerAPIClient, Fortunetell
 
 api = FortunetellerAPIClient("[YOUR_API_KEY]")
 
-query = { "category": "general", "question": "What does the future hold for me?" }
+query = {
+    "category": "general",
+    "question": "What does the future hold for me?"
+}
 
 try:
     result = api.execute(query)
@@ -157,7 +166,10 @@ from apiverve_fortuneteller.apiClient import FortunetellerAPIClient, Fortunetell
 
 api = FortunetellerAPIClient("[YOUR_API_KEY]")
 
-query = { "category": "general", "question": "What does the future hold for me?" }
+query = {
+    "category": "general",
+    "question": "What does the future hold for me?"
+}
 
 try:
     result = api.execute(query)
@@ -191,7 +203,10 @@ The client supports the context manager protocol for automatic resource cleanup:
 ```python
 from apiverve_fortuneteller.apiClient import FortunetellerAPIClient, FortunetellerAPIClientError
 
-query = { "category": "general", "question": "What does the future hold for me?" }
+query = {
+    "category": "general",
+    "question": "What does the future hold for me?"
+}
 
 # Using context manager ensures proper cleanup
 with FortunetellerAPIClient("[YOUR_API_KEY]") as api:
@@ -217,7 +232,10 @@ from apiverve_fortuneteller.apiClient import FortunetellerAPIClient
 # Enable debug mode
 api = FortunetellerAPIClient("[YOUR_API_KEY]", debug=True)
 
-query = { "category": "general", "question": "What does the future hold for me?" }
+query = {
+    "category": "general",
+    "question": "What does the future hold for me?"
+}
 
 # Debug information will be printed to console
 result = api.execute(query)
@@ -232,8 +250,12 @@ from apiverve_fortuneteller.apiClient import FortunetellerAPIClient
 
 api = FortunetellerAPIClient("[YOUR_API_KEY]")
 
+query = {
+    "category": "general",
+    "question": "What does the future hold for me?"
+}
+
 try:
-    query = { "category": "general", "question": "What does the future hold for me?" }
     result = api.execute(query)
     print(result)
 finally:
