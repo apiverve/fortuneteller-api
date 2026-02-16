@@ -1,6 +1,6 @@
 [project]
 name = "apiverve-fortuneteller"
-version = "1.1.13"
+version = "1.1.14"
 authors = [
   { name="APIVerve", email="hello@apiverve.com" },
 ]
@@ -8,7 +8,7 @@ description = "Fortune Teller uses AI to generate personalized mystical fortunes
 keywords = []
 readme = "README.md"
 requires-python = ">=3.7"
-license = "MIT"
+license = {text = "MIT"}
 dependencies = [
     "requests>=2.25.0"
 ]
