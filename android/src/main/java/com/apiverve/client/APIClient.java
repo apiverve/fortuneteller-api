@@ -114,15 +114,9 @@ public class FortuneTellerAPIClient {
             throw new IllegalArgumentException("API key must be provided. Get your API key at: https://apiverve.com");
         }
 
-        // Validate API key format (alphanumeric with hyphens/underscores for prefixed keys)
+        // Validate API key format (GUID, prefixed keys like apv_xxx, or alphanumeric)
         if (!apiKey.matches("^[a-zA-Z0-9_-]+$")) {
             throw new IllegalArgumentException("Invalid API key format. API key must be alphanumeric and may contain hyphens and underscores");
-        }
-
-        // Check minimum length (GUIDs are typically 36 chars with hyphens, or 32 without)
-        String trimmedKey = apiKey.replace("-", "").replace("_", "");
-        if (trimmedKey.length() < 32) {
-            throw new IllegalArgumentException("Invalid API key. API key appears to be too short");
         }
 
         this.apiKey = apiKey;
