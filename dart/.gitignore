@@ -1,0 +1,10 @@
+# Override parent .gitignore - include all package files
+!pubspec.yaml
+!LICENSE
+!README.md
+!CHANGELOG.md
+!lib/
+
+# Only ignore build artifacts
+.dart_tool/
+build/
