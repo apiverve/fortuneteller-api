@@ -13,16 +13,10 @@ class fortunetellerWrapper {
             throw new Error('API key must be provided as a non-empty string. Get your API key at: https://apiverve.com');
         }
 
-        // Validate API key format (GUID or alphanumeric with hyphens)
-        const apiKeyPattern = /^[a-zA-Z0-9-]+$/;
+        // Validate API key format (GUID, prefixed keys like apv_xxx, or alphanumeric)
+        const apiKeyPattern = /^[a-zA-Z0-9_-]+$/;
         if (!apiKeyPattern.test(api_key)) {
-            throw new Error('Invalid API key format. API key must be alphanumeric and may contain hyphens. Get your API key at: https://apiverve.com');
-        }
-
-        // Check minimum length (GUIDs are typically 36 chars with hyphens, or 32 without)
-        const trimmedKey = api_key.replace(/-/g, '');
-        if (trimmedKey.length < 32) {
-            throw new Error('Invalid API key. API key appears to be too short. Get your API key at: https://apiverve.com');
+            throw new Error('Invalid API key format. API key must be alphanumeric and may contain hyphens and underscores. Get your API key at: https://apiverve.com');
         }
 
         if (typeof secure !== 'boolean') {
