@@ -4,25 +4,37 @@ declare module '@apiverve/fortuneteller' {
     secure?: boolean;
   }
 
+  /**
+   * Describes fields the current plan does not unlock. Locked fields arrive as null
+   * in `data`; `locked_fields` names them, using dot paths for nested fields.
+   * Absent when the plan unlocks everything.
+   */
+  export interface PremiumInfo {
+    message: string;
+    upgrade_url: string;
+    locked_fields: string[];
+  }
+
   export interface fortunetellerResponse {
     status: string;
     error: string | null;
     data: FortuneTellerData;
     code?: number;
+    premium?: PremiumInfo;
   }
 
 
   interface FortuneTellerData {
-      fortune:      string;
-      insight:      string;
-      timeframe:    string;
-      category:     string;
+      fortune:      null | string;
+      insight:      null | string;
+      timeframe:    null | string;
+      category:     null | string;
       question:     null;
-      luckyNumbers: number[];
-      luckyElement: string;
-      luckyColor:   string;
-      luckyDay:     string;
-      timestamp:    Date;
+      luckyNumbers: (number | null)[];
+      luckyElement: null | string;
+      luckyColor:   null | string;
+      luckyDay:     null | string;
+      timestamp:    Date | null;
   }
 
   export default class fortunetellerWrapper {
