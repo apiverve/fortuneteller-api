@@ -27,7 +27,7 @@ paths:
           schema:
             type: string
           required: false
-          description: 'Fortune category: general, love, career, health, wealth, travel'
+          description: Fortune category
           example: general
         - name: question
           in: query
