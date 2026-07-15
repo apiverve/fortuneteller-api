@@ -1,0 +1,11 @@
+# Generated from the OpenAPI pipeline — not hand-written source.
+openapi.yaml linguist-generated=true
+
+# Demo snippets, not library code. Keeps the language bar reflecting the SDKs.
+examples/** linguist-documentation=true
+
+# Normalize line endings so Windows-built packages don't ship CRLF.
+* text=auto eol=lf
+*.png binary
+*.ico binary
+*.svg binary
