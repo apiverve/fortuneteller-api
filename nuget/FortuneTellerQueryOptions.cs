@@ -11,7 +11,7 @@ namespace APIVerve.API.FortuneTeller
     public class FortuneTellerQueryOptions
     {
         /// <summary>
-        /// Fortune category: general, love, career, health, wealth, travel
+        /// Fortune category
         /// </summary>
         [JsonProperty("category")]
         public string Category { get; set; }
