@@ -25,6 +25,9 @@ namespace APIVerve.API.FortuneTeller
 
         [JsonProperty("data")]
         public Data Data { get; set; }
+
+        [JsonProperty("premium")]
+        public Premium Premium { get; set; }
     }
 
     public partial class Data
@@ -45,7 +48,7 @@ namespace APIVerve.API.FortuneTeller
         public object Question { get; set; }
 
         [JsonProperty("luckyNumbers")]
-        public long[] LuckyNumbers { get; set; }
+        public long?[] LuckyNumbers { get; set; }
 
         [JsonProperty("luckyElement")]
         public string LuckyElement { get; set; }
@@ -57,6 +60,18 @@ namespace APIVerve.API.FortuneTeller
         public string LuckyDay { get; set; }
 
         [JsonProperty("timestamp")]
-        public DateTimeOffset Timestamp { get; set; }
+        public DateTimeOffset? Timestamp { get; set; }
+    }
+
+    public partial class Premium
+    {
+        [JsonProperty("message")]
+        public string Message { get; set; }
+
+        [JsonProperty("upgrade_url")]
+        public Uri UpgradeUrl { get; set; }
+
+        [JsonProperty("locked_fields")]
+        public string[] LockedFields { get; set; }
     }
 }
