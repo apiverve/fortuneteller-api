@@ -51,7 +51,7 @@ Here's a simple example to get you started quickly:
 
 ```csharp
 using System;
-using APIVerve;
+using APIVerve.API.FortuneTeller;
 
 class Program
 {
@@ -60,9 +60,9 @@ class Program
         // Initialize the API client
         var apiClient = new FortuneTellerAPIClient("[YOUR_API_KEY]");
 
-        var queryOptions = new QueryOptions {
-    category = "general",
-    question = "What does the future hold for me?"
+        var queryOptions = new FortuneTellerQueryOptions {
+    Category = "general",
+    Question = "What does the future hold for me?"
 };
 
         // Make the API call
@@ -117,7 +117,7 @@ The modern async/await pattern provides the best performance and code readabilit
 ```csharp
 using System;
 using System.Threading.Tasks;
-using APIVerve;
+using APIVerve.API.FortuneTeller;
 
 public class Example
 {
@@ -125,9 +125,9 @@ public class Example
     {
         var apiClient = new FortuneTellerAPIClient("[YOUR_API_KEY]");
 
-        var queryOptions = new QueryOptions {
-    category = "general",
-    question = "What does the future hold for me?"
+        var queryOptions = new FortuneTellerQueryOptions {
+    Category = "general",
+    Question = "What does the future hold for me?"
 };
 
         var response = await apiClient.ExecuteAsync(queryOptions);
@@ -150,7 +150,7 @@ If you need to use synchronous code, you can use the `Execute` method:
 
 ```csharp
 using System;
-using APIVerve;
+using APIVerve.API.FortuneTeller;
 
 public class Example
 {
@@ -158,9 +158,9 @@ public class Example
     {
         var apiClient = new FortuneTellerAPIClient("[YOUR_API_KEY]");
 
-        var queryOptions = new QueryOptions {
-    category = "general",
-    question = "What does the future hold for me?"
+        var queryOptions = new FortuneTellerQueryOptions {
+    Category = "general",
+    Question = "What does the future hold for me?"
 };
 
         var response = apiClient.Execute(queryOptions);
@@ -188,7 +188,7 @@ The API client provides comprehensive error handling. Here are some examples:
 ```csharp
 using System;
 using System.Threading.Tasks;
-using APIVerve;
+using APIVerve.API.FortuneTeller;
 
 public class Example
 {
@@ -196,9 +196,9 @@ public class Example
     {
         var apiClient = new FortuneTellerAPIClient("[YOUR_API_KEY]");
 
-        var queryOptions = new QueryOptions {
-    category = "general",
-    question = "What does the future hold for me?"
+        var queryOptions = new FortuneTellerQueryOptions {
+    Category = "general",
+    Question = "What does the future hold for me?"
 };
 
         try
@@ -241,7 +241,7 @@ public class Example
 ```csharp
 using System;
 using System.Threading.Tasks;
-using APIVerve;
+using APIVerve.API.FortuneTeller;
 
 public class Example
 {
@@ -253,9 +253,9 @@ public class Example
         apiClient.SetMaxRetries(3);        // Retry up to 3 times (default: 0, max: 3)
         apiClient.SetRetryDelay(2000);     // Wait 2 seconds between retries
 
-        var queryOptions = new QueryOptions {
-    category = "general",
-    question = "What does the future hold for me?"
+        var queryOptions = new FortuneTellerQueryOptions {
+    Category = "general",
+    Question = "What does the future hold for me?"
 };
 
         try
@@ -295,9 +295,9 @@ var apiClient = new FortuneTellerAPIClient("[YOUR_API_KEY]");
 apiClient.AddCustomHeader("X-Custom-Header", "custom-value");
 apiClient.AddCustomHeader("X-Request-ID", Guid.NewGuid().ToString());
 
-var queryOptions = new QueryOptions {
-    category = "general",
-    question = "What does the future hold for me?"
+var queryOptions = new FortuneTellerQueryOptions {
+    Category = "general",
+    Question = "What does the future hold for me?"
 };
 
 var response = await apiClient.ExecuteAsync(queryOptions);
@@ -322,9 +322,9 @@ apiClient.SetLogger(message =>
     Console.WriteLine($"[LOG] {DateTime.Now:yyyy-MM-dd HH:mm:ss} - {message}");
 });
 
-var queryOptions = new QueryOptions {
-    category = "general",
-    question = "What does the future hold for me?"
+var queryOptions = new FortuneTellerQueryOptions {
+    Category = "general",
+    Question = "What does the future hold for me?"
 };
 
 var response = await apiClient.ExecuteAsync(queryOptions);
@@ -341,9 +341,9 @@ var apiClient = new FortuneTellerAPIClient("[YOUR_API_KEY]");
 apiClient.SetMaxRetries(3);           // Retry up to 3 times (default: 0, max: 3)
 apiClient.SetRetryDelay(1500);        // Wait 1.5 seconds between retries (default: 1000ms)
 
-var queryOptions = new QueryOptions {
-    category = "general",
-    question = "What does the future hold for me?"
+var queryOptions = new FortuneTellerQueryOptions {
+    Category = "general",
+    Question = "What does the future hold for me?"
 };
 
 var response = await apiClient.ExecuteAsync(queryOptions);
@@ -354,9 +354,9 @@ var response = await apiClient.ExecuteAsync(queryOptions);
 The API client implements `IDisposable` for proper resource cleanup:
 
 ```csharp
-var queryOptions = new QueryOptions {
-    category = "general",
-    question = "What does the future hold for me?"
+var queryOptions = new FortuneTellerQueryOptions {
+    Category = "general",
+    Question = "What does the future hold for me?"
 };
 
 using (var apiClient = new FortuneTellerAPIClient("[YOUR_API_KEY]"))
@@ -376,23 +376,23 @@ using (var apiClient = new FortuneTellerAPIClient("[YOUR_API_KEY]"))
   "status": "ok",
   "error": null,
   "data": {
-    "fortune": "The threads of destiny are aligning, weaving a tapestry of unexpected opportunities. Embrace the whispers of change, for they carry the keys to unlocking your hidden potential.",
-    "insight": "Trust your intuition; it is the compass guiding you toward your truest self.",
+    "fortune": "The threads of destiny are weaving a tapestry of unexpected joy; embrace the unknown, for within its depths lie blossoms of serendipity. A golden opportunity awaits, carried upon the wings of synchronicity.",
+    "insight": "Trust in the whispers of your intuition; it shall guide you through the maze of life.",
     "timeframe": "in the coming weeks",
     "category": "general",
     "question": null,
     "luckyNumbers": [
-      69,
-      94,
-      18,
-      63,
-      41,
-      62
+      87,
+      10,
+      16,
+      83,
+      99,
+      34
     ],
-    "luckyElement": "Fire",
+    "luckyElement": "Wood",
     "luckyColor": "Purple",
-    "luckyDay": "Friday",
-    "timestamp": "2025-11-30T10:24:58.097Z"
+    "luckyDay": "Tuesday",
+    "timestamp": "2025-12-16T22:23:31.796Z"
   }
 }
 ```
