@@ -192,11 +192,44 @@ x-api-key: YOUR_API_KEY_HERE
 Get your API key: [https://apiverve.com](https://apiverve.com)
 
 ### Response Format
-All responses are JSON with this structure:
+
+Every APIVerve endpoint returns the same envelope — check `status`, then read `data`:
+
 ```json
 {
   "status": "ok",
+  "error": null,
   "data": { ... }
+}
+```
+
+### Example Response
+
+A real response from the Fortune Teller API:
+
+```json
+{
+  "status": "ok",
+  "error": null,
+  "data": {
+    "fortune": "The threads of destiny are weaving a tapestry of unexpected joy; embrace the unknown, for within its depths lie blossoms of serendipity. A golden opportunity awaits, carried upon the wings of synchronicity.",
+    "insight": "Trust in the whispers of your intuition; it shall guide you through the maze of life.",
+    "timeframe": "in the coming weeks",
+    "category": "general",
+    "question": null,
+    "luckyNumbers": [
+      87,
+      10,
+      16,
+      83,
+      99,
+      34
+    ],
+    "luckyElement": "Wood",
+    "luckyColor": "Purple",
+    "luckyDay": "Tuesday",
+    "timestamp": "2025-12-16T22:23:31.796Z"
+  }
 }
 ```
 
