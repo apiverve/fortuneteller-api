@@ -18,7 +18,7 @@ servers:
 paths:
   /v1/fortuneteller:
     get:
-      summary: Get AI Fortune Prediction
+      summary: Fortune Teller
       description: Generate personalized AI fortune with insights and lucky elements
       operationId: fortuneteller
       parameters:
