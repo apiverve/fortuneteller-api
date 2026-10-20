@@ -3,11 +3,10 @@ Fortune Teller API
 
 Fortune Teller uses AI to generate personalized mystical fortunes across multiple categories including love, career, health, wealth, and travel.
 
-![Build Status](https://img.shields.io/badge/build-passing-green)
-![Code Climate](https://img.shields.io/badge/maintainability-B-purple)
-![Prod Ready](https://img.shields.io/badge/production-ready-blue)
 
-This is a Python API Wrapper for the [Fortune Teller API](https://apiverve.com/marketplace/fortuneteller?utm_source=pypi&utm_medium=readme)
+[![PyPI version](https://img.shields.io/pypi/v/apiverve-fortuneteller.svg)](https://pypi.org/project/apiverve-fortuneteller/)
+
+This is a Python wrapper for the [Fortune Teller API](https://apiverve.com/marketplace/fortuneteller?utm_source=pypi&utm_medium=referral&utm_content=readme)
 
 ---
 
@@ -29,8 +28,8 @@ pip3 install apiverve-fortuneteller
 
 ## Configuration
 
-Before using the fortuneteller API client, you have to setup your account and obtain your API Key.
-You can get it by signing up at [https://apiverve.com](https://apiverve.com?utm_source=pypi&utm_medium=readme)
+Before using the Fortune Teller API client, you have to setup your account and obtain your API Key.
+You can get it by signing up at [https://apiverve.com](https://apiverve.com?utm_source=pypi&utm_medium=referral&utm_content=readme)
 
 ---
 
@@ -63,7 +62,7 @@ except Exception as e:
 
 ## Usage
 
-The Fortune Teller API documentation is found here: [https://docs.apiverve.com/ref/fortuneteller](https://docs.apiverve.com/ref/fortuneteller?utm_source=pypi&utm_medium=readme).
+The Fortune Teller API documentation is found here: [https://docs.apiverve.com/ref/fortuneteller](https://docs.apiverve.com/ref/fortuneteller?utm_source=pypi&utm_medium=referral&utm_content=readme).
 You can find parameters, example responses, and status codes documented here.
 
 ### Setup
@@ -108,23 +107,23 @@ print(result)
   "status": "ok",
   "error": null,
   "data": {
-    "fortune": "The threads of destiny are aligning, weaving a tapestry of unexpected opportunities. Embrace the whispers of change, for they carry the keys to unlocking your hidden potential.",
-    "insight": "Trust your intuition; it is the compass guiding you toward your truest self.",
+    "fortune": "The threads of destiny are weaving a tapestry of unexpected joy; embrace the unknown, for within its depths lie blossoms of serendipity. A golden opportunity awaits, carried upon the wings of synchronicity.",
+    "insight": "Trust in the whispers of your intuition; it shall guide you through the maze of life.",
     "timeframe": "in the coming weeks",
     "category": "general",
     "question": null,
     "luckyNumbers": [
-      69,
-      94,
-      18,
-      63,
-      41,
-      62
+      87,
+      10,
+      16,
+      83,
+      99,
+      34
     ],
-    "luckyElement": "Fire",
+    "luckyElement": "Wood",
     "luckyColor": "Purple",
-    "luckyDay": "Friday",
-    "timestamp": "2025-11-30T10:24:58.097Z"
+    "luckyDay": "Tuesday",
+    "timestamp": "2025-12-16T22:23:31.796Z"
   }
 }
 ```
@@ -267,7 +266,7 @@ finally:
 
 ## Customer Support
 
-Need any assistance? [Get in touch with Customer Support](https://apiverve.com/contact?utm_source=pypi&utm_medium=readme).
+Need any assistance? [Get in touch with Customer Support](https://apiverve.com/contact?utm_source=pypi&utm_medium=referral&utm_content=readme).
 
 ---
 
@@ -278,12 +277,12 @@ Stay up to date by following [@apiverveHQ](https://twitter.com/apiverveHQ) on Tw
 
 ## Legal
 
-All usage of the APIVerve website, API, and services is subject to the [APIVerve Terms of Service](https://apiverve.com/terms?utm_source=pypi&utm_medium=readme) and all legal documents and agreements.
+All usage of the APIVerve website, API, and services is subject to the [APIVerve Terms of Service](https://apiverve.com/terms?utm_source=pypi&utm_medium=referral&utm_content=readme) and all legal documents and agreements.
 
 ---
 
 ## License
-Licensed under the The MIT License (MIT)
+Licensed under the MIT License (MIT)
 
 Copyright (&copy;) 2026 APIVerve, and EvlarSoft LLC
 
