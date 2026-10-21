@@ -1,7 +1,7 @@
 {
     "name": "apiverve/fortuneteller",
     "description": "Fortune Teller uses AI to generate personalized mystical fortunes across multiple categories including love, career, health, wealth, and travel.",
-    "version": "1.2.0",
+    "version": "1.2.2",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -21,7 +21,7 @@
         "horoscope",
         "divination"
     ],
-    "homepage": "https://apiverve.com/marketplace/fortuneteller?utm_source=php&utm_medium=homepage",
+    "homepage": "https://apiverve.com/marketplace/fortuneteller?utm_source=php&utm_medium=referral&utm_content=homepage",
     "support": {
         "email": "hello@apiverve.com",
         "docs": "https://docs.apiverve.com/ref/fortuneteller",
