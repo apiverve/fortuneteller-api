@@ -4,7 +4,7 @@
     <TargetFrameworks>net20;net35;net40;net45;netstandard2.0;netstandard2.1;net6.0;net8.0</TargetFrameworks>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>Fortune Teller API</Title>
-    <Version>1.2.2</Version>
+    <Version>1.2.3</Version>
     <Authors>APIVerve</Authors>
     <Company>APIVerve</Company>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
@@ -37,7 +37,7 @@
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
 
     <!-- Package Release Notes -->
-    <PackageReleaseNotes>Fortune Teller API client for .NET, version 1.2.2. Features include async/await support, automatic retries, custom headers, request logging, and cancellation token support.</PackageReleaseNotes>
+    <PackageReleaseNotes>Fortune Teller API client for .NET, version 1.2.3. Features include async/await support, automatic retries, custom headers, request logging, and cancellation token support.</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
