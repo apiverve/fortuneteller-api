@@ -46,10 +46,10 @@ final _formatPatterns = {
 
 /// Fortune Teller API client.
 ///
-/// For more information, visit: https://apiverve.com/marketplace/fortuneteller?utm_source=dart&utm_medium=readme
+/// For more information, visit: https://apiverve.com/marketplace/fortuneteller?utm_source=dart&utm_medium=referral&utm_content=readme
 ///
 /// Parameters:
-/// * [category] - Fortune category: general, love, career, health, wealth, travel
+/// * [category] - Fortune category
 /// * [question] - Optional question for personalized fortune (max 500 characters) [maxLength: 500]
 class FortunetellerClient {
   final String apiKey;

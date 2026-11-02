@@ -5,7 +5,7 @@ Fortune Teller uses AI to generate personalized mystical fortunes across multipl
 [![pub package](https://img.shields.io/pub/v/apiverve_fortuneteller.svg)](https://pub.dev/packages/apiverve_fortuneteller)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-This is the Dart/Flutter client for the [Fortune Teller API](https://apiverve.com/marketplace/fortuneteller?utm_source=dart&utm_medium=readme).
+This is the Dart/Flutter client for the [Fortune Teller API](https://apiverve.com/marketplace/fortuneteller?utm_source=dart&utm_medium=referral&utm_content=readme).
 
 ## Installation
 
@@ -13,7 +13,7 @@ Add this to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  apiverve_fortuneteller: ^1.1.14
+  apiverve_fortuneteller: ^1.2.4
 ```
 
 Then run:
@@ -53,35 +53,35 @@ void main() async {
   "status": "ok",
   "error": null,
   "data": {
-    "fortune": "The threads of destiny are aligning, weaving a tapestry of unexpected opportunities. Embrace the whispers of change, for they carry the keys to unlocking your hidden potential.",
-    "insight": "Trust your intuition; it is the compass guiding you toward your truest self.",
+    "fortune": "The threads of destiny are weaving a tapestry of unexpected joy; embrace the unknown, for within its depths lie blossoms of serendipity. A golden opportunity awaits, carried upon the wings of synchronicity.",
+    "insight": "Trust in the whispers of your intuition; it shall guide you through the maze of life.",
     "timeframe": "in the coming weeks",
     "category": "general",
     "question": null,
     "luckyNumbers": [
-      69,
-      94,
-      18,
-      63,
-      41,
-      62
+      87,
+      10,
+      16,
+      83,
+      99,
+      34
     ],
-    "luckyElement": "Fire",
+    "luckyElement": "Wood",
     "luckyColor": "Purple",
-    "luckyDay": "Friday",
-    "timestamp": "2025-11-30T10:24:58.097Z"
+    "luckyDay": "Tuesday",
+    "timestamp": "2025-12-16T22:23:31.796Z"
   }
 }
 ```
 
 ## API Reference
 
-- **API Home:** [Fortune Teller API](https://apiverve.com/marketplace/fortuneteller?utm_source=dart&utm_medium=readme)
-- **Documentation:** [docs.apiverve.com/ref/fortuneteller](https://docs.apiverve.com/ref/fortuneteller?utm_source=dart&utm_medium=readme)
+- **API Home:** [Fortune Teller API](https://apiverve.com/marketplace/fortuneteller?utm_source=dart&utm_medium=referral&utm_content=readme)
+- **Documentation:** [docs.apiverve.com/ref/fortuneteller](https://docs.apiverve.com/ref/fortuneteller?utm_source=dart&utm_medium=referral&utm_content=readme)
 
 ## Authentication
 
-All requests require an API key. Get yours at [apiverve.com](https://apiverve.com?utm_source=dart&utm_medium=readme).
+All requests require an API key. Get yours at [apiverve.com](https://apiverve.com?utm_source=dart&utm_medium=referral&utm_content=readme).
 
 ## License
 
@@ -89,4 +89,4 @@ MIT License - see [LICENSE](LICENSE) for details.
 
 ---
 
-Built with Dart for [APIVerve](https://apiverve.com?utm_source=dart&utm_medium=readme)
+Built with Dart for [APIVerve](https://apiverve.com?utm_source=dart&utm_medium=referral&utm_content=readme)
