@@ -1,6 +1,6 @@
 [project]
 name = "apiverve-fortuneteller"
-version = "1.2.2"
+version = "1.2.5"
 authors = [
   { name="APIVerve", email="hello@apiverve.com" },
 ]
