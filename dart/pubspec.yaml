@@ -1,6 +1,6 @@
 name: apiverve_fortuneteller
 description: "Fortune Teller uses AI to generate personalized mystical fortunes across multiple categories including love, career, health, wealth, and travel."
-version: 1.2.4
+version: 1.2.5
 homepage: https://apiverve.com/marketplace/fortuneteller?utm_source=dart&utm_medium=referral&utm_content=homepage
 repository: https://github.com/apiverve/fortuneteller-api/tree/main/dart
 
